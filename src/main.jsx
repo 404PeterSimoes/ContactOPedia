@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import Header from './layout/Header';
-import Footer from './layout/Footer';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import ContactIndex from './components/ContactPages/ContactIndex';
 
 createRoot(document.getElementById('root')).render(
