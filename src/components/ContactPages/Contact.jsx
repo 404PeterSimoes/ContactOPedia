@@ -20,7 +20,9 @@ function Contact(props) {
         </div>
       </div>
       <div className="col-1 pt-2">
-        <button className="btn btn-primary btn-sm m-1">
+        <button
+          className={`btn btn-sm m-1 ${props.contact.isFavourite ? 'btn-warning' : 'btn-outline-warning'}`}
+        >
           <i className="bi bi-star-fill"></i>
         </button>
       </div>
