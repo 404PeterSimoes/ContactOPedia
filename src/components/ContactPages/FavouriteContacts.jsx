@@ -1,7 +1,6 @@
 import Contact from './Contact';
 
 function FavouriteContacts(props) {
-  console.log(props);
   return (
     <div
       className="col-12 p-2"
