@@ -1,5 +1,4 @@
 function Contact(props) {
-  console.log(props);
   return (
     <div
       className="row p-md-2 mb-2"
@@ -22,7 +21,7 @@ function Contact(props) {
       <div className="col-1 pt-2">
         <button
           className={`btn btn-sm m-1 ${props.contact.isFavourite ? 'btn-warning' : 'btn-outline-warning'}`}
-          onClick={() => favouriteClick(props.contact)}
+          onClick={() => props.favouriteClick(props.contact)}
         >
           <i className="bi bi-star-fill"></i>
         </button>

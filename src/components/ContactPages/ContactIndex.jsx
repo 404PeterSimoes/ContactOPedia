@@ -28,7 +28,15 @@ function ContactIndex() {
   ]);
 
   function handleToggleFavourites(contact) {
-    console.log(contact);
+    setContactList((prevState) => {
+      return prevState.map((obj) => {
+        if (obj.id == contact.id) {
+          return { ...obj, isFavourite: !obj.isFavourite };
+        } else {
+          return obj;
+        }
+      });
+    });
   }
 
   return (
@@ -44,6 +52,7 @@ function ContactIndex() {
         <div className="py-2">
           <div className="col-12">
             <FavouriteContacts
+              favouriteClick={handleToggleFavourites}
               contacts={contactList.filter((u) => u.isFavourite == true)}
             />
           </div>
@@ -51,6 +60,7 @@ function ContactIndex() {
         <div className="py-2">
           <div className="coo-12">
             <GeneralContacts
+              favouriteClick={handleToggleFavourites}
               contacts={contactList.filter((u) => u.isFavourite == false)}
             />
           </div>
