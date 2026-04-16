@@ -27,6 +27,10 @@ function ContactIndex() {
     },
   ]);
 
+  function handleToggleFavourites(contact) {
+    console.log(contact);
+  }
+
   return (
     <div className="container" style={{ minHeight: '85vh' }}>
       <div className="py-3">
