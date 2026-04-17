@@ -14,7 +14,6 @@ function AddContact(props) {
 
   function handleFormInputChange(e) {
     const { name, value } = e.target;
-    console.log(name, value);
 
     setFormData({
       ...formData,
@@ -44,7 +43,7 @@ function AddContact(props) {
     } catch (error) {
       console.error('Error adding contact: ', error);
       setMessages({
-        errorMessage: response.msg,
+        errorMessage: 'Error encountered',
         successMessage: undefined,
       });
     }

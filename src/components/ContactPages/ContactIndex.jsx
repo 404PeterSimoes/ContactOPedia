@@ -54,7 +54,8 @@ function ContactIndex() {
 
     const newFinalContact = {
       ...newContact,
-      id: contactList[contactList.length - 1].id + 1,
+      id:
+        contactList.length > 0 ? contactList[contactList.length - 1].id + 1 : 1,
       isFavourite: false,
     };
 
@@ -77,12 +78,23 @@ function ContactIndex() {
     });
   }
 
+  function handleRemoveAllContacts() {
+    setContactList([]);
+  }
+
   return (
     <div className="container" style={{ minHeight: '85vh' }}>
       <div className="py-3">
         <div className="row py-2">
           <div className="col-6">ADD CONTACT</div>
-          <div className="col-6">REMOVE CONTACT</div>
+          <div className="col-6">
+            <button
+              className="btn btn-danger form-control"
+              onClick={handleRemoveAllContacts}
+            >
+              Remove All
+            </button>
+          </div>
         </div>
         <div className="py-2">
           <div className="col-12">
