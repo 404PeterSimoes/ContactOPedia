@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-function AddContact() {
+function AddContact(props) {
+  const [messages, setMessages] = useState({
+    errorMessage: '',
+    sucessMessage: '',
+  });
+
   function handleAddContactForm(formData) {
     const contactData = {
       name: formData.get('name'),
@@ -10,15 +15,11 @@ function AddContact() {
 
     try {
       console.log(contactData);
+      props.handleAddContact(contactData);
     } catch (error) {
       console.error('Error adding contact: ', error);
     }
   }
-
-  const [messages, setMessages] = useState({
-    errorMessage: '',
-    sucessMessage: '',
-  });
 
   return (
     <div className="border col-12 text-white p-2">
