@@ -6,6 +6,22 @@ function AddContact(props) {
     successMessage: '',
   });
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+  });
+
+  function handleFormInputChange(e) {
+    const { name, value } = e.target;
+    console.log(name, value);
+
+    setFormData({
+      ...formData,
+      [name]: e.target.value,
+    });
+  }
+
   function handleAddContactForm(formData) {
     const contactData = {
       name: formData.get('name'),
@@ -45,6 +61,8 @@ function AddContact(props) {
             <input
               placeholder="Name..."
               name="name"
+              value={formData.name}
+              onChange={handleFormInputChange}
               className="form-control form-control-sm"
             />
           </div>
@@ -52,6 +70,8 @@ function AddContact(props) {
             <input
               placeholder="Email..."
               name="email"
+              value={formData.email}
+              onChange={handleFormInputChange}
               className="form-control form-control-sm"
             />
           </div>
@@ -59,6 +79,8 @@ function AddContact(props) {
             <input
               placeholder="Phone..."
               name="phone"
+              value={formData.phone}
+              onChange={handleFormInputChange}
               className="form-control form-control-sm"
             />
           </div>
