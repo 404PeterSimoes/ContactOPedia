@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import FavouriteContacts from './FavouriteContacts';
 import GeneralContacts from './GeneralContacts';
+import AddContact from './AddContact';
 
 function ContactIndex() {
   const [contactList, setContactList] = useState([
@@ -59,7 +60,9 @@ function ContactIndex() {
           <div className="col-6">REMOVE CONTACT</div>
         </div>
         <div className="py-2">
-          <div className="col-12">FORM TO ADD A NEW CONTACT</div>
+          <div className="col-12">
+            <AddContact />
+          </div>
         </div>
         <div className="py-2">
           <div className="col-12">
