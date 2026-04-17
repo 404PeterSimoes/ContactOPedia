@@ -50,6 +50,8 @@ function ContactIndex() {
     setContactList((prevState) => {
       return prevState.concat([newFinalContact]);
     });
+
+    return { status: 'success', msg: 'Contact was added successfully' };
   }
 
   function handleDeleteContact(contactId) {

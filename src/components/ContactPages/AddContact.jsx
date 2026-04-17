@@ -3,7 +3,7 @@ import { useState } from 'react';
 function AddContact(props) {
   const [messages, setMessages] = useState({
     errorMessage: '',
-    sucessMessage: '',
+    successMessage: '',
   });
 
   function handleAddContactForm(formData) {
@@ -15,9 +15,22 @@ function AddContact(props) {
 
     try {
       console.log(contactData);
-      props.handleAddContact(contactData);
+      const response = props.handleAddContact(contactData);
+
+      if (response.status == 'success') {
+        setMessages({ errorMessage: undefined, successMessage: response.msg });
+      } else {
+        setMessages({
+          errorMessage: 'Error encountered',
+          successMessage: undefined,
+        });
+      }
     } catch (error) {
       console.error('Error adding contact: ', error);
+      setMessages({
+        errorMessage: 'Error encountered',
+        successMessage: undefined,
+      });
     }
   }
 
@@ -49,13 +62,15 @@ function AddContact(props) {
               className="form-control form-control-sm"
             />
           </div>
-          {messages.sucessMessage && (
+          {messages.successMessage && (
             <div className="col-12 text-center text-success">
-              Success Message
+              {messages.successMessage}
             </div>
           )}
           {messages.errorMessage && (
-            <div className="col-12 text-center text-danger">Error Message</div>
+            <div className="col-12 text-center text-danger">
+              {messages.errorMessage}
+            </div>
           )}
           <div className="col-12">
             <button className="btn btn-primary btn-sm form-control">
