@@ -21,14 +21,14 @@ function AddContact(props) {
         setMessages({ errorMessage: undefined, successMessage: response.msg });
       } else {
         setMessages({
-          errorMessage: 'Error encountered',
+          errorMessage: response.msg,
           successMessage: undefined,
         });
       }
     } catch (error) {
       console.error('Error adding contact: ', error);
       setMessages({
-        errorMessage: 'Error encountered',
+        errorMessage: response.msg,
         successMessage: undefined,
       });
     }

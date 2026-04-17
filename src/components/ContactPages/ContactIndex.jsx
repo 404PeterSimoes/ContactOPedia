@@ -41,6 +41,17 @@ function ContactIndex() {
   }
 
   function handleAddContact(newContact) {
+    // Validation
+    const duplicateRecord = contactList.filter((x) => {
+      if (x.name == newContact.name && x.phone == newContact.phone) {
+        return true;
+      }
+    });
+
+    if (duplicateRecord.length > 0) {
+      return { status: 'error', msg: 'Duplicate record.' };
+    }
+
     const newFinalContact = {
       ...newContact,
       id: contactList[contactList.length - 1].id + 1,
