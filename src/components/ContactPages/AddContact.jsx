@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function AddContact(props) {
   const [messages, setMessages] = useState({
@@ -11,6 +11,22 @@ function AddContact(props) {
     email: '',
     phone: '',
   });
+
+  useEffect(() => {
+    if (props.isUpdating && props.selectedContact) {
+      setFormData({
+        name: props.selectedContact.name,
+        email: props.selectedContact.email,
+        phone: props.selectedContact.phone,
+      });
+    } else {
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+      });
+    }
+  }, [props.isUpdating, props.selectedContact]);
 
   function handleFormInputChange(e) {
     const { name, value } = e.target;
@@ -30,7 +46,21 @@ function AddContact(props) {
 
     try {
       console.log(contactData);
-      const response = props.handleAddContact(contactData);
+      let response = undefined;
+
+      if (props.isUpdating && props.selectedContact) {
+        // update
+
+        response = props.handleUpdateContact({
+          id: props.selectedContact.id,
+          isFavourite: props.selectedContact.isFavourite,
+          ...contactData,
+        });
+      } else {
+        // create
+
+        response = props.handleAddContact(contactData);
+      }
 
       if (response.status == 'success') {
         setMessages({ errorMessage: undefined, successMessage: response.msg });
