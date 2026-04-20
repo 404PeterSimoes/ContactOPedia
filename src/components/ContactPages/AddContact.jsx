@@ -54,7 +54,7 @@ function AddContact(props) {
       <form action={handleAddContactForm}>
         <div className="row p-2">
           <div className="col-12 text-white-50 text-center h5">
-            Add a new Contact
+            {props.isUpdating ? 'Update Contact' : 'Add a new Contact'}
           </div>
           <div className="col-12 col-md-4 p-1">
             <input
@@ -93,16 +93,21 @@ function AddContact(props) {
               {messages.errorMessage}
             </div>
           )}
-          <div className="col-12">
+          <div className={props.isUpdating ? 'col-6' : 'col-12'}>
             <button className="btn btn-primary btn-sm form-control">
-              Create
+              {props.isUpdating ? 'Update' : 'Create'}
             </button>
           </div>
-          {/* <div className="col-12">
-            <button className="btn btn-danger btn-sm form-control">
-              Cancel
-            </button>
-          </div> */}
+          {props.isUpdating && (
+            <div className="col-6">
+              <button
+                className="btn btn-danger btn-sm form-control"
+                onClick={props.handleCancelUpdateContact}
+              >
+                Cancel
+              </button>
+            </div>
+          )}
         </div>
       </form>
     </div>

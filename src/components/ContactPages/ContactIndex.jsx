@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FavouriteContacts from './FavouriteContacts';
 import GeneralContacts from './GeneralContacts';
 import AddContact from './AddContact';
@@ -92,6 +92,11 @@ function ContactIndex() {
     setContactList([]);
   }
 
+  function handleCancelUpdateContact() {
+    setSelectedContact(null);
+    setIsUpdating(false);
+  }
+
   return (
     <div className="container" style={{ minHeight: '85vh' }}>
       <div className="py-3">
@@ -108,7 +113,11 @@ function ContactIndex() {
         </div>
         <div className="py-2">
           <div className="col-12">
-            <AddContact handleAddContact={handleAddContact} />
+            <AddContact
+              handleAddContact={handleAddContact}
+              isUpdating={isUpdating}
+              handleCancelUpdateContact={handleCancelUpdateContact}
+            />
           </div>
         </div>
         <div className="py-2">
