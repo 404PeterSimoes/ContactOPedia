@@ -12,6 +12,7 @@ function FavouriteContacts(props) {
           <Contact
             deleteClick={props.deleteClick}
             favouriteClick={props.favouriteClick}
+            updateClick={props.updateClick}
             contact={contact}
             key={index}
           />
