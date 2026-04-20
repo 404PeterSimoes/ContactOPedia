@@ -1,6 +1,6 @@
 import getRandomUser from '../utility/api';
 
-function AddRandomContact() {
+function AddRandomContact(props) {
   const getRandomContact = async () => {
     const response = await getRandomUser();
     if (response && response.results && response.results.length > 0) {
@@ -11,6 +11,8 @@ function AddRandomContact() {
         phone: user.phone,
       };
       console.log(formattedUser);
+
+      props.handleAddRandomContact(formattedUser);
     }
   };
 

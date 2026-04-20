@@ -97,6 +97,21 @@ function ContactIndex() {
     return { status: 'success', msg: 'Contact was added successfully' };
   }
 
+  function handleAddRandomContact(newContact) {
+    const newFinalContact = {
+      ...newContact,
+      id:
+        contactList.length > 0 ? contactList[contactList.length - 1].id + 1 : 1,
+      isFavourite: false,
+    };
+
+    setContactList((prevState) => {
+      return prevState.concat([newFinalContact]);
+    });
+
+    return { status: 'success', msg: 'Contact was added successfully' };
+  }
+
   function handleDeleteContact(contactId) {
     console.log(contactId);
 
@@ -123,7 +138,7 @@ function ContactIndex() {
       <div className="py-3">
         <div className="row py-2">
           <div className="col-6">
-            <AddRandomContact />
+            <AddRandomContact handleAddRandomContact={handleAddRandomContact} />
           </div>
           <div className="col-6">
             <button
