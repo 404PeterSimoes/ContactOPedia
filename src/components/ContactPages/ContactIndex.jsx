@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import FavouriteContacts from './FavouriteContacts';
 import GeneralContacts from './GeneralContacts';
 import AddContact from './AddContact';
+import AddRandomContact from './AddRandomContact';
 
 function ContactIndex() {
   const [contactList, setContactList] = useState([
@@ -121,7 +122,9 @@ function ContactIndex() {
     <div className="container" style={{ minHeight: '85vh' }}>
       <div className="py-3">
         <div className="row py-2">
-          <div className="col-6">ADD CONTACT</div>
+          <div className="col-6">
+            <AddRandomContact />
+          </div>
           <div className="col-6">
             <button
               className="btn btn-danger form-control"
